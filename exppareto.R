@@ -28,5 +28,5 @@ cppFunction(depends="RcppArmadillo",plugins="cpp11",code="
             }
             ") 
 
-
+#a
 
