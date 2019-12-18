@@ -26,4 +26,3 @@ cppFunction(depends="RcppArmadillo",plugins="cpp11",code="
               return(((e*=sigma)%=sign(0.5-alphas))+=mean);
             }
             ") 
-#a
