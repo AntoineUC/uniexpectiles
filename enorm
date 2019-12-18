@@ -3,7 +3,7 @@ library(Rcpp)
 library(RcppArmadillo)
 
 cppFunction(depends="RcppArmadillo",plugins="cpp11",code="
-            arma::vec enormb(arma::vec& alphas, const double mean=0.0, const double sigma=1.0) {
+            arma::vec enorm(arma::vec& alphas, const double mean=0.0, const double sigma=1.0) {
               arma::vec alphabis=((abs((2*alphas)-1.0)*(-1.0))+1)/2.0;
               arma::vec e(arma::size(alphas));
               arma::vec e1(arma::size(alphas));
