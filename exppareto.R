@@ -3,7 +3,7 @@ library(Rcpp)
 library(RcppArmadillo)
 
 cppFunction(depends="RcppArmadillo",plugins="cpp11",code="
-            arma::vec exppareto(arma::vec& alphas, double location=1.0, double shape=2) {
+            arma::vec epareto(arma::vec& alphas, double location=1.0, double shape=2) {
               arma::vec alphabis=alphas;
               arma::vec e(arma::size(alphas));
               arma::vec e1(arma::size(alphas));
@@ -27,3 +27,6 @@ cppFunction(depends="RcppArmadillo",plugins="cpp11",code="
               return(e);
             }
             ") #multiniveaux avec critère d'arrêt
+
+
+
