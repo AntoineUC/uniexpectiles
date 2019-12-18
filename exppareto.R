@@ -26,7 +26,4 @@ cppFunction(depends="RcppArmadillo",plugins="cpp11",code="
               }
               return(e);
             }
-            ") #multiniveaux avec critère d'arrêt
-
-
-
+            ")
