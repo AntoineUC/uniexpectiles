@@ -1,32 +1,8 @@
 rm(list=ls())
 
-#expectiles gaussiens
-
-#install.packages("devtools")
-
-#require(devtools)
-
-#install_version("expectreg",version="0.39")
-
-#install.packages("VGAM")
-
-#install.packages("expectreg")
-
-#install.packages("Rcpp")
-
-#install.packages("RcppArmadillo")
-
-#install.packages("microbenchmark")
-
 library(Rcpp)
 
-library(VGAM)
-
-library(expectreg)
-
 library(RcppArmadillo)
-
-library(microbenchmark)
 
 cppFunction(depends="RcppArmadillo",plugins="cpp11",code="
             arma::vec explaplace(arma::vec& alphas, const double mean=0.0, const double sigma=1.0, const double lambda=1.0) {
@@ -51,16 +27,4 @@ cppFunction(depends="RcppArmadillo",plugins="cpp11",code="
               }
               return(((e*=sigma)%=sign(alphas-0.5))+=mean);
             }
-            ") #multiniveaux avec critère d'arrêt
-
-lambda=1
-
-microbenchmark(times=1000,qnorm(0.95),qenorm(0.95),enorm(0.95),explaplace(0.95))
-
-microbenchmark(times=1000,qnorm(seq(0.05,0.95,0.05)),qenorm(seq(0.05,0.95,0.05)),enorm(seq(0.05,0.95,0.05)),explaplace(seq(0.05,0.95,0.05)))
-
-plot(sign(1/2-seq(0.01,0.99,0.01))*sqrt(lambda/2)*log(1-abs(2*(1-seq(0.01,0.99,0.01))-1))~seq(0.01,0.99,0.01),type="l")
-
-points(explaplace(seq(0.01,0.99,0.01))~seq(0.01,0.99,0.01),type="l",col="red")
-
-
+            ") 
